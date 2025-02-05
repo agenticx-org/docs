@@ -2,4 +2,24 @@
 
 ## Introduction
 
-The API is used internally by the application and is accessed using Websockets from the front-end UI. 
+The API is used internally by the application and is streamed to the UI via Websockets. It recieves events
+from the client, which are expected to be text input, and it outputs structured content ready to add to your report.
+
+The main functions are:
+
+1. Web search with deep research - does a web search.
+ * Text based
+ * Structured data input - e.g. tables 
+ * Produces markdown output
+2. Data scientist in a box - runs python code to perform analysis on your data.
+ * Uses smolagents (https://github.com/huggingface/smolagents)
+ * Is like a Jupyter notebook in the output
+ * Forecasting is supported
+ * Multi-linear regression for correlation is also supported
+ * Is skilled at value_counts and histograms
+3. Internal data search with deep research - does an internal search.
+ * The same as 1. and 2. except a different Tool is provided to the data search to search internal data
+ * The internal data source initially supported is an object store or file share
+ * Supports searching unstructured text files, excel files, and csv files
+ * Unstructured text is available as RAG
+ * Structured excel and csv files are transformed and stored in SQL
